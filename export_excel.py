@@ -14,6 +14,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSV = os.path.join(ROOT, 'data', 'dataset.csv')
 OUT = os.path.join(ROOT, 'output', '数据收集进展.xlsx')
+DESKTOP_OUT = r'c:\Users\汪昱全\Desktop\数据收集进展.xlsx'
 
 df = pd.read_csv(CSV, encoding='utf-8-sig')
 
@@ -85,19 +86,20 @@ ws1.cell(row=1, column=1).alignment = Alignment(horizontal='center', vertical='c
 ws1.row_dimensions[1].height = 30
 
 ws1.merge_cells('A2:H2')
-ws1.cell(row=2, column=1, value=f'报告日期：2026-06-17 | 方法论：物种优先 × 跨功能区对比 | 目标区域：华中+华东').font = Font(name='微软雅黑', size=9, color='666666')
+ws1.cell(row=2, column=1, value=f'报告日期：2026-06-18 | 方法论：物种优先 × 跨功能区对比 | 目标区域：华中+华东').font = Font(name='微软雅黑', size=9, color='666666')
 ws1.cell(row=2, column=1).alignment = CENTER
 
 # 核心指标卡片
 row = 4
+ref_count = df['reference'].nunique()
 metrics = [
-    ('总记录数', '161', '条'),
-    ('目标物种', '12', '种（5乔木+5灌木+4地被）'),
-    ('覆盖城市', '12', '个'),
-    ('参考文献', '36', '篇'),
-    ('含TSP数据', f'{df["tsp_g_m2"].notna().sum()}', '条'),
-    ('含PM10数据', f'{df["pm10_g_m2"].notna().sum()}', '条'),
-    ('含PM2.5数据', f'{df["pm2_5_g_m2"].notna().sum()}', '条'),
+    ('总记录数', str(len(df)), '条'),
+    ('目标物种', '14', '种（5乔木+5灌木+4地被）'),
+    ('覆盖城市', str(df['city'].nunique()), '个'),
+    ('参考文献', str(ref_count), '篇'),
+    ('含TSP数据', f'{df["tsp_g_m2"].notna().sum() if "tsp_g_m2" in df.columns else 0}', '条'),
+    ('含PM10数据', f'{df["pm10_g_m2"].notna().sum() if "pm10_g_m2" in df.columns else 0}', '条'),
+    ('含PM2.5数据', f'{df["pm2_5_g_m2"].notna().sum() if "pm2_5_g_m2" in df.columns else 0}', '条'),
     ('功能区类型', '6', '工业区/交通干道/公园清洁区/居住区/城市混合/文教区'),
 ]
 
@@ -138,6 +140,7 @@ species_data = [
     ('灌木', '红叶石楠', 'Photinia × fraseri'),
     ('灌木', '红花檵木', 'Loropetalum chinense var. rubrum'),
     ('灌木', '杜鹃', 'Rhododendron simsii'),
+    ('灌木', '石楠', 'Photinia serrulata'),
     ('地被', '八角金盘', 'Fatsia japonica'),
     ('地被', '洒金桃叶珊瑚', 'Aucuba japonica var. variegata'),
     ('地被', '麦冬/沿阶草', 'Ophiopogon japonicus/bodinieri'),
@@ -169,7 +172,7 @@ style_body(ws1, 12, row - 1, len(species_headers))
 
 # 合计行
 ws1.cell(row=row, column=1, value='合计').font = Font(name='微软雅黑', bold=True, size=10)
-ws1.cell(row=row, column=3, value='12种')
+ws1.cell(row=row, column=3, value='14种')
 ws1.cell(row=row, column=4, value=len(df))
 ws1.cell(row=row, column=5, value=df['tsp_g_m2'].notna().sum())
 ws1.cell(row=row, column=6, value=df['pm10_g_m2'].notna().sum())
@@ -194,7 +197,7 @@ style_header(ws1, row, len(city_headers))
 city_meta = {
     '武汉': ('湖北', '华中'), '杭州': ('浙江', '华东'), '长沙': ('湖南', '华中'),
     '郑州': ('河南', '华中'), '南昌': ('江西', '华中'), '扬州': ('江苏', '华东'),
-    '南京': ('江苏', '华东'), '上海': ('上海', '华东'), '合肥': ('安徽', '华东'),
+    '南京': ('江苏', '华东'), '上海': ('上海', '华东'), '合肥': ('安徽', '华中'),
     '洛阳': ('河南', '华中'), '福州': ('福建', '华东'), '深圳': ('广东', '华东'),
 }
 
@@ -239,9 +242,9 @@ integrity_data = [
     ('PM2.5覆盖率', f'{df["pm2_5_g_m2"].notna().sum()}/{len(df)} ({df["pm2_5_g_m2"].notna().sum()/len(df)*100:.0f}%)',
      '细颗粒物（空气动力学直径<2.5μm）'),
     ('乔木:灌木:地被', f'{len(df[df["layer"]=="乔木"])}:{len(df[df["layer"]=="灌木"])}:{len(df[df["layer"]=="地被"])}',
-     '地被层仅占总记录的11%，仍需补充'),
-    ('华北:华东比例', f'{len(df[df["city"].isin(["武汉","长沙","郑州","南昌","洛阳"])])}:{len(df[df["city"].isin(["杭州","扬州","南京","上海","合肥","福州","深圳"])])}',
-     '华中(5城)与华东(7城)数据分布'),
+     f'地被层{len(df[df["layer"]=="地被"])}条({len(df[df["layer"]=="地被"])/len(df)*100:.0f}%)，仍需重点补充'),
+    ('华中:华东比例', f'{len(df[df["city"].isin(["武汉","长沙","郑州","南昌","洛阳","合肥"])])}:{len(df[df["city"].isin(["杭州","扬州","南京","上海","福州","深圳"])])}',
+     '华中6城与华东6城数据分布（合肥计入华中）'),
 ]
 
 row += 1
@@ -262,19 +265,19 @@ ws2 = wb.create_sheet('物种×城市覆盖矩阵')
 TARGET_SPECIES = [
     ('香樟', '乔木'), ('桂花', '乔木'), ('二球悬铃木', '乔木'),
     ('广玉兰', '乔木'), ('女贞', '乔木'),
-    ('海桐', '灌木'), ('红叶石楠', '灌木'), ('红花檵木', '灌木'), ('杜鹃', '灌木'),
+    ('海桐', '灌木'), ('红叶石楠', '灌木'), ('红花檵木', '灌木'), ('杜鹃', '灌木'), ('石楠', '灌木'),
     ('八角金盘', '地被'), ('洒金桃叶珊瑚', '地被'),
     ('麦冬', '地被'), ('沿阶草', '地被'),
 ]
 
 CITIES_SORTED = ['武汉', '杭州', '长沙', '郑州', '南昌', '扬州', '南京', '上海', '合肥', '洛阳', '福州', '深圳']
 
-ws2.merge_cells('A1:N1')
+ws2.merge_cells('A1:O1')
 ws2.cell(row=1, column=1, value='物种 × 城市 数据覆盖矩阵').font = TITLE_FONT
 ws2.cell(row=1, column=1).alignment = CENTER
 ws2.row_dimensions[1].height = 30
 
-ws2.merge_cells('A2:N2')
+ws2.merge_cells('A2:O2')
 ws2.cell(row=2, column=1, value='单元格数字 = 该物种在该城市的记录条数 | 颜色深浅反映数据量（深绿=丰富，浅绿=有数据，灰色=无数据）').font = Font(name='微软雅黑', size=9, color='666666')
 ws2.cell(row=2, column=1).alignment = CENTER
 
@@ -516,4 +519,8 @@ ws5.freeze_panes = 'A2'
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 wb.save(OUT)
 print(f'[OK] Excel 文档已生成 → {OUT}')
+# Also save to desktop
+os.makedirs(os.path.dirname(DESKTOP_OUT), exist_ok=True)
+wb.save(DESKTOP_OUT)
+print(f'[OK] 桌面副本 → {DESKTOP_OUT}')
 print(f'  包含 5 个工作表: 数据总览 | 物种×城市矩阵 | 物种×功能区矩阵 | 参考文献清单 | 完整数据集')
