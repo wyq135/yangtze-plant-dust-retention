@@ -1,12 +1,10 @@
-# CLAUDE.md
+# 长江流域亚热带城市植物叶片滞尘数据集
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+**Plant Dust Retention — Yangtze Subtropical Urban Agglomeration**
 
-## 项目概况
+植物叶片滞尘可行性验证与数据集构建。目标：为论文撰写提供"长江流域亚热带城市群植物叶片滞尘"的系统性数据基础。
 
-植物叶片滞尘（Plant Dust Retention）可行性验证与数据集构建。目标：为论文撰写提供"长江流域亚热带城市群植物叶片滞尘"的系统性数据基础。
-
-- **GitHub**: https://github.com/wyq135/plant-dust-retention
+- **GitHub**: https://github.com/wyq135/yangtze-plant-dust-retention
 - **核心方法论**: **地理优先** —— 先锁定长江流域亚热带城市群，区域内所有植物物种的滞尘数据全量纳入，不再限制物种。物种趋同性由地理约束自然呈现。
 - **方法论演变**: 物种优先（v1）→ 物种优先×跨功能区（v2）→ **地理优先×物种开放（v3，当前）**
 

@@ -1,6 +1,6 @@
-# 植物叶片滞尘 (Plant Dust Retention)
+# 长江流域亚热带城市植物叶片滞尘数据集
 
-**可行性验证与数据集构建** — 植物叶片滞尘能力的跨功能区、跨物种定量研究。
+**Plant Dust Retention — Yangtze Subtropical Urban Agglomeration**
 
 ## 快速导航
 
@@ -23,8 +23,8 @@
 ## 快速开始
 
 ```bash
-git clone git@github.com:wyq135/plant-dust-retention.git
-cd plant-dust-retention
+git clone git@github.com:wyq135/yangtze-plant-dust-retention.git
+cd yangtze-plant-dust-retention
 
 # 重建数据集
 python build_v2_dataset.py
