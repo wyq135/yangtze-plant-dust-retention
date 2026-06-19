@@ -14,7 +14,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSV = os.path.join(ROOT, 'data', 'dataset.csv')
 OUT = os.path.join(ROOT, 'output', '数据收集进展.xlsx')
-DESKTOP_OUT = r'c:\Users\汪昱全\Desktop\数据收集进展.xlsx'
+# DESKTOP_OUT = r'c:\Users\汪昱全\Desktop\数据收集进展.xlsx'  # 笔记本专用，本机注释
 
 df = pd.read_csv(CSV, encoding='utf-8-sig')
 
@@ -519,8 +519,8 @@ ws5.freeze_panes = 'A2'
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 wb.save(OUT)
 print(f'[OK] Excel 文档已生成 → {OUT}')
-# Also save to desktop
-os.makedirs(os.path.dirname(DESKTOP_OUT), exist_ok=True)
-wb.save(DESKTOP_OUT)
-print(f'[OK] 桌面副本 → {DESKTOP_OUT}')
+# Also save to desktop (笔记本专用，本机跳过)
+# os.makedirs(os.path.dirname(DESKTOP_OUT), exist_ok=True)
+# wb.save(DESKTOP_OUT)
+# print(f'[OK] 桌面副本 → {DESKTOP_OUT}')
 print(f'  包含 5 个工作表: 数据总览 | 物种×城市矩阵 | 物种×功能区矩阵 | 参考文献清单 | 完整数据集')

@@ -228,24 +228,8 @@ add("香樟", "Cinnamomum camphora", "乔木", "公园清洁区", 0.55, "杭州"
 # 地被植物组
 # ============================================================
 
-# H: 吴艳芳等(2017) — 福州草本
-REF_H = "吴艳芳等, 2017, 森林与环境学报"
-DOI_H = "10.13324/j.cnki.jfcf.2017.04.006"
-add("麦冬", "Ophiopogon japonicus", "地被", "城市混合", 3.084, "福州",
-    ambient_pm10=55, ambient_pm2_5=28, temp_c=20, humidity_pct=77,
-    sampling_season="春季", days_after_rain=7, sample_count=5,
-    reference=REF_H, doi=DOI_H,
-    notes="15种草本中排名第1")
-
-# I: 殷卓君等(2020) — 深圳
-REF_I = "殷卓君等, 2020, 北京大学学报(自然科学版)"
-DOI_I = "10.13209/j.0479-8023.2020.096"
-add("沿阶草", "Ophiopogon bodinieri", "地被", "城市混合", 0.18, "深圳",
-    pm10_g_m2=0.06, pm2_5_g_m2=0.04,
-    ambient_pm10=45, ambient_pm2_5=22, temp_c=23, humidity_pct=80,
-    days_after_rain=3, sample_count=5,
-    reference=REF_I, doi=DOI_I,
-    notes="6种园林植物中排名第5; 深圳雨量充沛数值偏低")
+# H: 吴艳芳等(2017) — 已排除（福州，闽江流域，非长江流域）
+# I: 殷卓君等(2020) — 已排除（深圳，珠江流域，非长江流域）
 
 # J: 李巧云等(2021) — 湖南(中亚热带)
 REF_J = "李巧云等, 2021, 西北林学院学报"
