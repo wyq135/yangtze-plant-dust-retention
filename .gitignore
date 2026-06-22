@@ -32,3 +32,6 @@ references/downloaded/
 
 # Image extraction outputs
 image_tables/
+
+# QA system data copy (data lives in Desktop/2026/)
+qa_system/data/dataset.csv

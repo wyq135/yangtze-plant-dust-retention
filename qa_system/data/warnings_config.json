@@ -1,0 +1,60 @@
+{
+  "_description": "动态警告配置——query_engine根据查询结果匹配规则，自动生成警告注入到返回JSON。新增问题论文只需编辑此文件。",
+
+  "outlier_papers": [
+    {
+      "reference": "张莉2007",
+      "field": "reference_short",
+      "match": "contains",
+      "condition": null,
+      "message_template": "含张莉2007冬季极端数据({n}条，最高{max_val:.1f} g/m²)，冬季累积期可能远超标记的4d。排除后均值{adj_mean:.2f} g/m²({adj_n}条)"
+    },
+    {
+      "reference": "张灵艺2015",
+      "field": "reference_short",
+      "match": "contains",
+      "condition": "value > 50",
+      "message_template": "含张灵艺2015极值({n}条，最高{max_val:.1f} g/m²)，为长累积期(15-25d)+地被植物，统计时应做敏感性分析"
+    },
+    {
+      "reference": "朱天燕2018",
+      "field": "reference_short",
+      "match": "contains",
+      "condition": null,
+      "message_template": "朱天燕2018数据为四季最大值(非单季均值)，不可与其他论文单季值直接比较。灌木最高1398 g/m²代表最大滞尘潜力"
+    }
+  ],
+
+  "method_bias": [
+    {
+      "method": "水溶消解",
+      "field": "measurement_method",
+      "match": "contains",
+      "message": "含水溶消解法(Chen Yazhen 2023)数据({n}条)，化学机制与常规水洗法不同，数值偏低5-10倍，不可与其他方法直接比较"
+    },
+    {
+      "method": "气溶胶再发生器",
+      "field": "measurement_method",
+      "match": "contains",
+      "message": "含气溶胶再发生器法数据({n}条)，该法无法完全剥离叶片颗粒物，数值系统性偏低，不可横向比较"
+    }
+  ],
+
+  "global_warnings": [
+    {
+      "condition_field": "pm_type",
+      "condition": "in ['pm10', 'pm2_5']",
+      "message": "PM{pm_type}数据仅{count}条，远少于TSP(约1000条)，统计结论置信度有限"
+    },
+    {
+      "condition_field": null,
+      "condition": "species contains '构树' and value == 0",
+      "message": "构树TSP=0为冬季落叶期(叶片掉光)，数据有效但需标注物候原因"
+    },
+    {
+      "condition_field": null,
+      "condition": "count < 5 and not degraded",
+      "message": "仅{count}条记录，样本量小，统计结果仅供参考"
+    }
+  ]
+}
