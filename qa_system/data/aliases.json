@@ -471,6 +471,56 @@
       "standard": "沙地柏",
       "confidence": "medium",
       "note": "民间俗称(Juniperus sabina)"
+    },
+    "枫香": {
+      "standard": "枫香树",
+      "confidence": "high",
+      "note": "常用简称，Liquidambar formosana"
+    },
+    "旱柳": {
+      "standard": "旱柳",
+      "confidence": "high",
+      "note": "Salix matsudana，v4第三批新增"
+    },
+    "华北五角枫": {
+      "standard": "五角枫",
+      "confidence": "medium",
+      "note": "华北地区俗名，实为Acer mono"
+    },
+    "地锦": {
+      "standard": "地锦",
+      "confidence": "high",
+      "note": "Parthenocissus tricuspidata，v4第三批新增"
+    },
+    "糖槭": {
+      "standard": "糖槭",
+      "confidence": "high",
+      "note": "Acer saccharum，v4第三批新增"
+    },
+    "茶条槭": {
+      "standard": "茶条槭",
+      "confidence": "high",
+      "note": "Acer ginnala，v4第三批新增"
+    },
+    "蒙古栎": {
+      "standard": "蒙古栎",
+      "confidence": "high",
+      "note": "Quercus mongolica，v4第三批新增"
+    },
+    "梓树": {
+      "standard": "梓树",
+      "confidence": "high",
+      "note": "Catalpa ovata，v4第三批新增"
+    },
+    "黄菠萝": {
+      "standard": "黄檗",
+      "confidence": "high",
+      "note": "东北俗名，Phellodendron amurense"
+    },
+    "花曲柳": {
+      "standard": "花曲柳",
+      "confidence": "high",
+      "note": "Fraxinus rhynchophylla，v4第三批新增"
     }
   },
   "city_aliases": {
@@ -591,8 +641,7 @@
     },
     "朝阳市": {
       "standard": "朝阳",
-      "confidence": "high",
-      "note": "加市后缀"
+      "confidence": "high"
     },
     "安庆市": {
       "standard": "安庆",
@@ -636,13 +685,11 @@
     },
     "太原市": {
       "standard": "太原",
-      "confidence": "high",
-      "note": "加市后缀"
+      "confidence": "high"
     },
     "Taiyuan": {
       "standard": "太原",
-      "confidence": "high",
-      "note": "英文名"
+      "confidence": "high"
     },
     "西安市": {
       "standard": "西安",
@@ -866,13 +913,11 @@
     },
     "阿克苏市": {
       "standard": "阿克苏",
-      "confidence": "high",
-      "note": "加市后缀"
+      "confidence": "high"
     },
     "Aksu": {
       "standard": "阿克苏",
-      "confidence": "high",
-      "note": "英文名"
+      "confidence": "high"
     },
     "郑州市": {
       "standard": "郑州",
@@ -923,6 +968,125 @@
       "standard": "乌鲁木齐",
       "confidence": "medium",
       "note": "英文异拼"
+    },
+    "长春": {
+      "standard": "长春",
+      "confidence": "high",
+      "note": "吉林省会，v4第三批新增"
+    },
+    "长春市": {
+      "standard": "长春",
+      "confidence": "high"
+    },
+    "Changchun": {
+      "standard": "长春",
+      "confidence": "high"
+    },
+    "沈阳": {
+      "standard": "沈阳",
+      "confidence": "high",
+      "note": "辽宁省会，v4第三批新增"
+    },
+    "沈阳市": {
+      "standard": "沈阳",
+      "confidence": "high"
+    },
+    "Shenyang": {
+      "standard": "沈阳",
+      "confidence": "high"
+    },
+    "大连": {
+      "standard": "大连",
+      "confidence": "high",
+      "note": "辽宁，v4第三批新增"
+    },
+    "大连市": {
+      "standard": "大连",
+      "confidence": "high"
+    },
+    "Dalian": {
+      "standard": "大连",
+      "confidence": "high"
+    },
+    "天津": {
+      "standard": "天津",
+      "confidence": "high",
+      "note": "直辖市，v4第三批新增"
+    },
+    "天津市": {
+      "standard": "天津",
+      "confidence": "high"
+    },
+    "Tianjin": {
+      "standard": "天津",
+      "confidence": "high"
+    },
+    "太原": {
+      "standard": "太原",
+      "confidence": "high",
+      "note": "山西省会，v4第三批新增"
+    },
+    "兰州": {
+      "standard": "兰州",
+      "confidence": "high",
+      "note": "甘肃省会，v4第三批新增"
+    },
+    "兰州市": {
+      "standard": "兰州",
+      "confidence": "high"
+    },
+    "Lanzhou": {
+      "standard": "兰州",
+      "confidence": "high"
+    },
+    "银川": {
+      "standard": "银川",
+      "confidence": "high",
+      "note": "宁夏首府，v4第三批新增"
+    },
+    "银川市": {
+      "standard": "银川",
+      "confidence": "high"
+    },
+    "Yinchuan": {
+      "standard": "银川",
+      "confidence": "high"
+    },
+    "广州": {
+      "standard": "广州",
+      "confidence": "high",
+      "note": "广东省会，v4第三批新增"
+    },
+    "广州市": {
+      "standard": "广州",
+      "confidence": "high"
+    },
+    "Guangzhou": {
+      "standard": "广州",
+      "confidence": "high"
+    },
+    "阿克苏": {
+      "standard": "阿克苏",
+      "confidence": "high",
+      "note": "新疆，v4第三批新增"
+    },
+    "保定": {
+      "standard": "保定",
+      "confidence": "high",
+      "note": "河北，v4第三批新增"
+    },
+    "保定市": {
+      "standard": "保定",
+      "confidence": "high"
+    },
+    "Baoding": {
+      "standard": "保定",
+      "confidence": "high"
+    },
+    "朝阳": {
+      "standard": "朝阳",
+      "confidence": "high",
+      "note": "辽宁，v4第三批新增"
     }
   }
 }

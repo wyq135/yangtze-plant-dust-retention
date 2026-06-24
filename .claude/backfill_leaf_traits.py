@@ -3,6 +3,9 @@ import csv, sys
 # === Genus synonyms (updated classification → FRPS name used in database) ===
 GENUS_SYNONYMS = {
     'Triadica': 'Sapium',  # Triadica sebifera = Sapium sebiferum (FRPS Vol.44)
+    'Styphnolobium': 'Sophora',  # Styphnolobium japonicum = Sophora japonica (FRPS Vol.40)
+    'Dasiphora': 'Potentilla',   # Dasiphora fruticosa historically in Potentilla
+    'Herbaceous': None,  # 草本通用，跳过
 }
 
 # === Genus-level leaf trait database (from FRPS/Flora of China) ===
@@ -1116,6 +1119,151 @@ GENUS_TRAITS = GENUS_TRAITS = {
         'leaf_surface': '深绿色; 两面无毛',
         'trichomes': '无毛',
         'source': 'FRPS Vol.10(1)',
+    },
+    # === v4第三批新增属 (2026-06-24) ===
+    'Abies': {
+        'leaf_shape': '条形/线形; 扁平; 螺旋状排列; 常绿针叶',
+        'leaf_surface': '上面深绿色有光泽; 下面有两条白色气孔带',
+        'trichomes': '无毛(裸子植物); 嫩枝有时有毛',
+        'source': 'FRPS Vol.7',
+    },
+    'Amorpha': {
+        'leaf_shape': '奇数羽状复叶; 小叶卵形/椭圆形; 纸质; 全缘',
+        'leaf_surface': '上面深绿色; 下面淡绿色',
+        'trichomes': '两面被柔毛或仅下面有毛',
+        'source': 'FRPS Vol.41',
+    },
+    'Bombax': {
+        'leaf_shape': '掌状复叶; 小叶5-7枚; 倒卵形/椭圆状披针形; 纸质; 全缘',
+        'leaf_surface': '上面深绿色有光泽; 下面淡绿色',
+        'trichomes': '无毛或幼时被星状毛',
+        'source': 'FRPS Vol.49(2)',
+    },
+    'Bougainvillea': {
+        'leaf_shape': '卵形/椭圆形; 纸质; 全缘; 互生',
+        'leaf_surface': '上面深绿色; 下面淡绿色',
+        'trichomes': '无毛或疏被柔毛',
+        'source': 'FRPS Vol.26',
+    },
+    'Epipremnum': {
+        'leaf_shape': '心形/卵状披针形; 革质; 全缘或不规则羽裂; 攀援藤本',
+        'leaf_surface': '上面深绿色有光泽; 幼叶小老叶大',
+        'trichomes': '无毛',
+        'source': 'FRPS Vol.13(2)',
+    },
+    'Fagraea': {
+        'leaf_shape': '倒卵形/椭圆形; 革质; 全缘; 对生',
+        'leaf_surface': '上面深绿色有光泽; 下面淡绿色',
+        'trichomes': '无毛',
+        'source': 'FRPS Vol.61',
+    },
+    'Gleditsia': {
+        'leaf_shape': '一回或二回偶数羽状复叶; 小叶卵形/椭圆状披针形; 纸质; 边缘有锯齿',
+        'leaf_surface': '上面深绿色; 下面淡绿色',
+        'trichomes': '无毛或下面沿脉有毛; 枝干常具分枝刺',
+        'source': 'FRPS Vol.39',
+    },
+    'Hamelia': {
+        'leaf_shape': '椭圆形/倒卵形; 纸质; 全缘; 对生或轮生',
+        'leaf_surface': '上面深绿色; 下面淡绿色; 嫩叶常紫红色',
+        'trichomes': '无毛或疏被柔毛',
+        'source': 'FRPS Vol.71(1)',
+    },
+    'Lespedeza': {
+        'leaf_shape': '三出复叶; 小叶卵形/椭圆形/倒卵形; 纸质; 全缘',
+        'leaf_surface': '上面深绿色; 下面淡绿色',
+        'trichomes': '两面被贴伏柔毛或仅下面有毛',
+        'source': 'FRPS Vol.41',
+    },
+    'Lolium': {
+        'leaf_shape': '线形/狭线形; 禾本科; 扁平; 全缘; 叶舌短',
+        'leaf_surface': '上面粗糙; 下面光滑; 深绿色',
+        'trichomes': '无毛; 叶面有纵沟',
+        'source': 'FRPS Vol.9(2)',
+    },
+    'Maackia': {
+        'leaf_shape': '奇数羽状复叶; 小叶卵形/椭圆形; 纸质; 全缘',
+        'leaf_surface': '上面深绿色; 下面淡绿色',
+        'trichomes': '幼叶两面被柔毛; 老叶无毛或下面有毛',
+        'source': 'FRPS Vol.40',
+    },
+    'Mangifera': {
+        'leaf_shape': '长椭圆形/椭圆状披针形; 革质; 全缘; 叶缘波状',
+        'leaf_surface': '上面深绿色有光泽; 下面淡绿色',
+        'trichomes': '无毛',
+        'source': 'FRPS Vol.45(1)',
+    },
+    'Ormosia': {
+        'leaf_shape': '奇数羽状复叶; 小叶卵形/椭圆状披针形; 革质; 全缘',
+        'leaf_surface': '上面深绿色有光泽; 下面淡绿色或灰白色',
+        'trichomes': '无毛或下面被柔毛',
+        'source': 'FRPS Vol.40',
+    },
+    'Paeonia': {
+        'leaf_shape': '二回三出复叶; 小叶卵形/披针形; 纸质; 全缘或浅裂',
+        'leaf_surface': '上面深绿色; 下面淡绿色或灰白色',
+        'trichomes': '无毛或下面沿脉有毛',
+        'source': 'FRPS Vol.27',
+    },
+    'Phellodendron': {
+        'leaf_shape': '奇数羽状复叶; 小叶卵形/卵状披针形; 纸质; 全缘或具细锯齿',
+        'leaf_surface': '上面深绿色; 下面灰绿色; 叶背有透明腺点',
+        'trichomes': '无毛或下面沿脉有毛',
+        'source': 'FRPS Vol.43(2)',
+    },
+    'Philadelphus': {
+        'leaf_shape': '卵形/椭圆形; 纸质; 边缘有锯齿; 对生; 离基3-5出脉',
+        'leaf_surface': '上面深绿色; 下面淡绿色',
+        'trichomes': '上面疏被柔毛; 下面沿脉密被柔毛',
+        'source': 'FRPS Vol.35(1)',
+    },
+    'Physocarpus': {
+        'leaf_shape': '宽卵形/三角状卵形; 纸质; 边缘有重锯齿或3-5浅裂',
+        'leaf_surface': '上面深绿色; 下面淡绿色',
+        'trichomes': '无毛或下面沿脉有毛',
+        'source': 'FRPS Vol.36',
+    },
+    'Potentilla': {
+        'leaf_shape': '奇数羽状复叶或掌状复叶; 小叶卵形/椭圆形; 纸质; 边缘有锯齿',
+        'leaf_surface': '上面深绿色; 下面淡绿色或密被绒毛',
+        'trichomes': '两面被柔毛或绒毛; 种间差异大',
+        'source': 'FRPS Vol.37',
+    },
+    'Schefflera': {
+        'leaf_shape': '掌状复叶; 小叶5-9枚; 倒卵形/椭圆状披针形; 革质; 全缘',
+        'leaf_surface': '上面深绿色有光泽; 下面淡绿色',
+        'trichomes': '无毛',
+        'source': 'FRPS Vol.54',
+    },
+    'Sedum': {
+        'leaf_shape': '倒卵形/匙形/线形; 肉质; 全缘或具微锯齿; 互生或轮生',
+        'leaf_surface': '灰绿色至深绿色; 叶面有蜡质粉霜',
+        'trichomes': '无毛或疏被乳头状突起',
+        'source': 'FRPS Vol.34(1)',
+    },
+    'Sorbus': {
+        'leaf_shape': '奇数羽状复叶或单叶; 小叶卵形/椭圆状披针形; 纸质; 边缘有锯齿',
+        'leaf_surface': '上面深绿色; 下面淡绿色或灰白色',
+        'trichomes': '幼叶两面被绒毛; 老叶无毛或下面有毛',
+        'source': 'FRPS Vol.36',
+    },
+    'Swietenia': {
+        'leaf_shape': '偶数羽状复叶; 小叶卵形/椭圆状披针形; 革质; 全缘',
+        'leaf_surface': '上面深绿色有光泽; 下面淡绿色',
+        'trichomes': '无毛',
+        'source': 'FRPS Vol.43(3)',
+    },
+    'Tilia': {
+        'leaf_shape': '宽卵形/近圆形; 纸质; 边缘有锯齿; 基部心形偏斜',
+        'leaf_surface': '上面深绿色; 下面淡绿色或灰白色',
+        'trichomes': '下面脉腋有簇毛或全面被星状毛',
+        'source': 'FRPS Vol.49(1)',
+    },
+    'Yucca': {
+        'leaf_shape': '剑形/线状披针形; 革质; 全缘或边缘有细齿; 基生簇生',
+        'leaf_surface': '深绿色; 两面无毛; 叶面有白粉',
+        'trichomes': '无毛; 叶缘有时具纤维丝',
+        'source': 'FRPS Vol.14',
     },
 }
 
